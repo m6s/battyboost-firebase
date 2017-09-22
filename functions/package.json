@@ -9,6 +9,11 @@
     "tslint": "^5.7.0",
     "typescript": "^2.5.2"
   },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "deploy": "tsc && firebase deploy --only functions"
+  },
   "main": "build/src/index.js",
   "private": true
 }
