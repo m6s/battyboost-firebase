@@ -6,7 +6,7 @@ export interface CreatePartnerInput {
 }
 
 export class CreatePartnerOutput {
-    partnerId: string;
+    partnerId?: string;
     error?: string;
 }
 
