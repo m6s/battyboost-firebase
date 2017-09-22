@@ -1,0 +1,22 @@
+{
+  "$prefix": {
+    "_comment": "$prefix is used for testing. In production, use \"default\"",
+    "data": {
+      "_comment": "Contains the actual data tree. Everything is readonly.",
+      "partners": []
+    },
+    "logic": {
+      "_comment": "Writing will trigger function executions",
+      "$userId": {
+        "_comment": "Rules ensure that that a user can only read/write the tree under his own user id",
+        "$functionName": {
+          "_comment": "See Functions.md for available functions",
+          "$execId": {
+            "input": "Function specific input",
+            "output": "Set after function completion, contains result if successful or error"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+# Dependency directories
+node_modules/
+
+## Ignore generated JavaScript files
+functions/**/*.js
+functions/**/*.js.map
+
+# Mac
+.DS_Store
+
+# IntelliJ
+*.iml
+.idea/*
+!.idea/codeStyleSettings.xml

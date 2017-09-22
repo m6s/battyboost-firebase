@@ -1,0 +1,25 @@
+{
+  "rules": {
+    "$prefix": {
+      "txbegin": {
+        ".read": true,
+        ".write": true
+      },
+      "txend": {
+        ".validate": "newData.val() === root.child($prefix).child('txbegin').val()",
+        ".read": true,
+        ".write": true
+      },
+      "data": {
+        ".read": true,
+        ".write": true
+      },
+      "logic": {
+        "$userId": {
+          ".read": "$userId === auth.uid",
+          ".write": "$userId === auth.uid"
+        }
+      }
+    }
+  }
+}
