@@ -9,3 +9,5 @@ export {deletePos} from "./logic/DeletePos";
 export {createBattery} from "./logic/CreateBattery";
 export {updateBattery} from "./logic/UpdateBattery";
 export {deleteBattery} from "./logic/DeleteBattery";
+export {updateUser} from "./logic/UpdateUser";
+export {updateUserFields} from "./logic/UpdateUserFields";

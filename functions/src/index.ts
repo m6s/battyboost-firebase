@@ -27,6 +27,10 @@ export const updateBatteryTrigger = logicTrigger('updateBattery', battyboost.upd
 
 export const deleteBatteryTrigger = logicTrigger('deleteBattery', battyboost.deleteBattery);
 
+export const updateUserTrigger = logicTrigger('updateUser', battyboost.updateUser);
+
+export const updateUserFieldsTrigger = logicTrigger('updateUserFields', battyboost.updateUserFields);
+
 function logicTrigger(name: string, f: (Database, any) => Promise<any>) {
     return functions.database.ref(`{prefix}/logic/{userId}/${ name }/{execId}/input`)
         .onCreate(async event => {

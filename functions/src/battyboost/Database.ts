@@ -59,4 +59,24 @@ export class Database {
     setBatteryById(batteryId: string, battery: Battery) {
         return this.batteriesRef.child(batteryId).set(battery);
     }
+
+    setUserBankAccountOwnerById(userId: string, bankAccountOwner?: string) {
+        return this.usersRef.child(userId).child('bankAccountOwner').set(bankAccountOwner);
+    }
+
+    setUserIbanById(userId: string, iban?: string) {
+        return this.usersRef.child(userId).child('iban').set(iban);
+    }
+
+    setUserPhotoUrlById(userId: string, photoUrl?: string) {
+        return this.usersRef.child(userId).child('photoUrl').set(photoUrl);
+    }
+
+    setUserEmailById(userId: string, email?: string) {
+        return this.usersRef.child(userId).child('email').set(email);
+    }
+
+    setUserDisplayNameById(userId: string, displayName?: string) {
+        return this.usersRef.child(userId).child('displayName').set(displayName);
+    }
 }
