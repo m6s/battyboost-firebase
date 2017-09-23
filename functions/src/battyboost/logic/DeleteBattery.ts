@@ -1,19 +1,19 @@
 import {Database} from "../Database";
 import {BattyboostError} from "../entities/BattyboostError";
 
-export interface DeletePartnerInput {
-    partnerId: string;
+export interface DeleteBatteryInput {
+    batteryId: string;
 }
 
-export class DeletePartnerOutput {
+export class DeleteBatteryOutput {
     readonly output: boolean = true; // Hack because Firebase won't allow empty nodes
     error?: BattyboostError;
 }
 
-export async function deletePartner(database: Database, input: DeletePartnerInput) {
-    const output = new DeletePartnerOutput();
+export async function deleteBattery(database: Database, input: DeleteBatteryInput) {
+    const output = new DeleteBatteryOutput();
     try {
-        await database.removePartnerById(input.partnerId);
+        await database.removeBatteryById(input.batteryId);
     } catch (error) {
         output.error = BattyboostError.from(error);
     }

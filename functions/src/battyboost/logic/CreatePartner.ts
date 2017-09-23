@@ -1,3 +1,4 @@
+import {BattyboostError} from "../entities/BattyboostError";
 import {Partner} from "../entities/Partner";
 import {Database} from "../Database";
 
@@ -7,13 +8,17 @@ export interface CreatePartnerInput {
 
 export class CreatePartnerOutput {
     partnerId?: string;
-    error?: string;
+    error?: BattyboostError;
 }
 
-export async function createPartner(database: Database, input: CreatePartnerInput): Promise<CreatePartnerOutput> {
+export async function createPartner(database: Database, input: CreatePartnerInput) {
     const partner = input.partner;
-    const partnerRef = await database.partnersRef.push(partner);
     const output = new CreatePartnerOutput();
-    output.partnerId = partnerRef.key;
+    try {
+        const partnerRef = await database.pushPartner(partner);
+        output.partnerId = partnerRef.key;
+    } catch (error) {
+        output.error = BattyboostError.from(error);
+    }
     return output;
 }

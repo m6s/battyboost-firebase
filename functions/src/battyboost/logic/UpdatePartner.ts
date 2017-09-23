@@ -1,5 +1,6 @@
 import {Partner} from "../entities/Partner";
 import {Database} from "../Database";
+import {BattyboostError} from "../entities/BattyboostError";
 
 export interface UpdatePartnerInput {
     partnerId: string;
@@ -7,11 +8,16 @@ export interface UpdatePartnerInput {
 }
 
 export class UpdatePartnerOutput {
-    readonly updated: boolean = true; // Hack because Firebase won't allow empty nodes
-    error?: string;
+    readonly output: boolean = true; // Hack because Firebase won't allow empty nodes
+    error?: BattyboostError;
 }
 
 export async function updatePartner(database: Database, input: UpdatePartnerInput): Promise<UpdatePartnerOutput> {
-    await database.partnersRef.child(input.partnerId).set(input.partner);
-    return new UpdatePartnerOutput();
+    const output = new UpdatePartnerOutput();
+    try {
+        await database.setPartnerById(input.partnerId, input.partner);
+    } catch (error) {
+        output.error = BattyboostError.from(error);
+    }
+    return output;
 }

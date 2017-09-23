@@ -7,5 +7,5 @@ export async function publishUserData(database: Database, userRecord: UserRecord
     battyboostUser.displayName = userRecord.displayName || null;
     battyboostUser.email = userRecord.email || null;
     battyboostUser.photoUrl = userRecord.photoURL || null;
-    return database.usersRef.child(userRecord.uid).set(battyboostUser)
+    await database.setUserById(userRecord.uid, battyboostUser);
 }
